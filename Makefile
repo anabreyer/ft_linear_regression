@@ -17,7 +17,7 @@ help:
 	@echo "  make setup     - Install Python deps from requirements.txt"
 	@echo "  make venv      - Create a local virtualenv in .venv"
 	@echo "  make train     - Train the model (reads $(DATA), writes $(MODEL))"
-	@echo "  make predict   - Run interactive predictor (uses $(MODEL))"
+	@echo "  make predict   - Run interactive predictor (uses $(MODEL) if present)"
 	@echo "  make plot      - Show data scatter + fitted regression line"
 	@echo "  make eval      - Print MAE / RMSE / R^2 for current model"
 	@echo "  make clean     - Remove __pycache__ and pyc files"
@@ -34,9 +34,11 @@ venv:
 train: $(DATA)
 	$(PYTHON) train.py
 
-predict: $(MODEL)
+# NOTE: do NOT require $(MODEL) so predict can run with default thetas (0,0)
+predict:
 	$(PYTHON) predict.py
 
+# plot and eval still require a trained model
 plot: $(MODEL) $(DATA)
 	$(PYTHON) plot_fit.py
 

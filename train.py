@@ -2,7 +2,7 @@ import json
 import math
 from utils import *
 
-def train(X, Y, learning_rate=0.05, iterations=3000, verbose_every=300):
+def train(X, Y, learning_rate=0.05, iterations=6000, verbose_every=300):
     m = len(X)
 
     #normalize X and Y
