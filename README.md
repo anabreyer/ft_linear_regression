@@ -80,24 +80,24 @@ make reset
 
 ## How it works
 
-**Model (hypothesis)**  
-\[
+**Model (hypothesis)** \
+$\
 \widehat{price} = \theta_0 + \theta_1 \cdot mileage
-\]
+$
 
 **Training**  
 - We z-score normalize X (mileage) and Y (price):  
-  \(x'=\frac{x-\mu_x}{\sigma_x}\), \(y'=\frac{y-\mu_y}{\sigma_y}\)
+  $\(x'=\frac{x-\mu_x}{\sigma_x}\), \(y'=\frac{y-\mu_y}{\sigma_y}\)$
 - Run gradient descent on normalized data for stability:  
-  \(y' = a + b \cdot x'\)
+  $\(y' = a + b \cdot x'\)$
 - Convert back to original units:  
-  \(\theta_1 = \frac{\sigma_y b}{\sigma_x}\),  
-  \(\theta_0 = \mu_y + \sigma_y a - \theta_1 \mu_x\)
+  $\(\theta_1 = \frac{\sigma_y b}{\sigma_x}\)$,  
+  $\(\theta_0 = \mu_y + \sigma_y a - \theta_1 \mu_x\)$
 
-**Loss (for monitoring)**  
-\[
+**Loss (for monitoring)**\
+$\
 J(\theta_0,\theta_1) = \frac{1}{2m}\sum (\widehat{y}-y)^2
-\]
+$
 
 ## Interpreting results
 - **θ₀ (intercept)**: price at 0 km (brand-new approximation).
